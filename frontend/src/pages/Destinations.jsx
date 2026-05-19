@@ -133,7 +133,7 @@ function FilterButton({ label, active, onClick }) {
       onClick={onClick}
       className={`px-6 py-2 rounded-full font-semibold transition border ${
         active
-          ? "bg-teal-500 text-white border-teal-500 dark:bg-teal-500 dark:text-white"
+          ? "bg-teal-500 text-white border-teal-500 dark:bg-indigo-600 dark:border-indigo-600 dark:text-white"
           : "bg-gray-200 text-gray-700 hover:bg-gray-300 border-transparent dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
       }`}
     >
@@ -192,15 +192,15 @@ function DestinationCard({ destination, isFavorite, onToggleFavorite }) {
               
               <div className="space-y-2 text-sm text-gray-600 dark:text-slate-300 mb-4">
                 <div className="flex items-center">
-                  <MapPin className="w-4 h-4 mr-2 text-teal-600 dark:text-teal-400" />
+                  <MapPin className="w-4 h-4 mr-2 text-teal-600 dark:text-indigo-600" />
                   Best for: {destination.bestFor}
                 </div>
                 <div className="flex items-center">
-                  <Clock className="w-4 h-4 mr-2 text-teal-600 dark:text-teal-400" />
+                  <Clock className="w-4 h-4 mr-2 text-teal-600 dark:text-indigo-600" />
                     Best season: {destination.season}
                 </div>
                 <div className="flex items-center">
-                  <TrendingUp className="w-4 h-4 mr-2 text-teal-600 dark:text-teal-400" />
+                  <TrendingUp className="w-4 h-4 mr-2 text-teal-600 dark:text-indigo-600" />
                     Budget: {destination.cost}
                 </div>
               </div>
@@ -213,7 +213,7 @@ function DestinationCard({ destination, isFavorite, onToggleFavorite }) {
         e.stopPropagation();
         navigate(`/destinations/${destination.id}`);
       }}
-      className="mt-auto w-full bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-lg font-semibold transition dark:bg-teal-500 dark:hover:bg-teal-400"
+      className="mt-auto w-full bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-lg font-semibold transition dark:bg-indigo-600 dark:hover:bg-indigo-800"
     >
       Explore
     </button>

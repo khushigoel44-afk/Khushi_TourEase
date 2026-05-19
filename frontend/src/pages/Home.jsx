@@ -48,7 +48,7 @@ export default function Home() {
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white leading-[1.1] tracking-tighter">
                 Your Smart Travel
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-500 to-cyan-500">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-teal-500 to-cyan-600 dark:from-indigo-400 dark:to-purple-500">
                   Assistant Awaits
                 </span>
               </h1>
@@ -70,7 +70,7 @@ export default function Home() {
 
                 <Link
                   to="/destinations"
-                  className="px-8 py-3.5 bg-white/5 border border-white/10 backdrop-blur-md text-white hover:bg-white/10 rounded-xl font-bold transition-all duration-300 active:scale-95 text-md flex items-center justify-center min-w-[180px]"
+                  className="px-8 py-3.5 bg-white/5 border border-white/10 backdrop-blur-md text-white hover:bg-white/20 rounded-xl font-bold transition-all duration-300 active:scale-95 text-md flex items-center justify-center min-w-[180px]"
                 >
                   Explore Features
                 </Link>
@@ -209,7 +209,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-gray-900 dark:text-white">
             How{" "}
-            <span className="text-teal-600 dark:text-teal-400">TourEase</span>{" "}
+            <span className="bg-linear-to-r from-teal-500 to-cyan-600 dark:from-indigo-400 dark:to-purple-500 bg-clip-text text-transparent">TourEase</span>{" "}
             Works
           </h2>
           <p className="text-center text-gray-600 dark:text-gray-300 text-lg mb-16">
@@ -219,15 +219,15 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <StepCard
               number="1"
-              icon={<MapPin className="w-8 h-8" />}
+              icon={<MapPin className="w-8 h-8 text-teal-600 dark:text-indigo-600" />}
               title="Tell Us Your Destination"
               description="Simply enter where you want to go and when. Our AI understands your preferences."
-              color="bg-teal-500"
+              color="bg-gradient-to-br from-teal-400 via-teal-500 to-cyan-600 dark:from-purple-700 dark:via-indigo-700 dark:to-purple-800"
             />
 
             <StepCard
               number="2"
-              icon={<Star className="w-8 h-8" />}
+              icon={<Star className="w-8 h-8 text-teal-600 dark:text-indigo-600" />}
               title="Get Personalized Suggestions"
               description="Receive custom itineraries based on your interests, budget, and travel style."
               color="bg-orange-500"
@@ -235,15 +235,15 @@ export default function Home() {
 
             <StepCard
               number="3"
-              icon={<Clock className="w-8 h-8" />}
+              icon={<Clock className="w-8 h-8 text-teal-600 dark:text-indigo-600" />}
               title="Travel with Confidence"
               description="Access your plans offline, get real-time updates, and enjoy 24/7 support."
-              color="bg-teal-500"
+              color="bg-gradient-to-br from-teal-400 via-teal-500 to-cyan-600 dark:from-purple-700 dark:via-indigo-700 dark:to-purple-800"
             />
 
             <StepCard
               number="4"
-              icon={<Award className="w-8 h-8" />}
+              icon={<Award className="w-8 h-8 text-teal-600 dark:text-indigo-600" />}
               title="Share Your Story"
               description="Document memories, share tips with community, and earn rewards for contributions."
               color="bg-orange-500"
@@ -256,7 +256,7 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-gray-900 dark:text-white">
           Join Our Global Travel{" "}
-          <span className="text-teal-600 dark:text-teal-400">Community</span>
+          <span className="bg-linear-to-r from-teal-500 to-cyan-600 dark:from-indigo-400 dark:to-purple-500 bg-clip-text text-transparent">Community</span>
         </h2>
         <p className="text-center text-gray-600 dark:text-gray-300 text-lg mb-16 max-w-3xl mx-auto">
           Connect with fellow travelers, share experiences, and get inspired for
@@ -287,7 +287,7 @@ export default function Home() {
         </div>
 
         <div className="relative h-80 rounded-2xl overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-cyan-500 opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-teal-400 via-teal-500 to-cyan-600 dark:from-purple-700 dark:via-indigo-700 dark:to-purple-800"></div>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center text-white px-4">
               <Users className="w-20 h-20 mx-auto mb-6 opacity-80" />
@@ -310,7 +310,7 @@ export default function Home() {
       </div>
       <Testimonials />
       {/* ================= CTA SECTION ================= */}
-      <div className="bg-gradient-to-br from-teal-400 via-teal-500 to-cyan-600 text-white py-20">
+      <div className="bg-gradient-to-br from-teal-400 via-teal-500 to-cyan-600 dark:from-purple-700 dark:via-indigo-700 dark:to-purple-800 text-white py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-block bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold mb-6">
             Ready to Explore the World?
@@ -335,7 +335,7 @@ export default function Home() {
             >
               Get Started Free
             </Link>
-            <Link to="/demo" className="bg-white text-teal-600 hover:bg-gray-100 px-10 py-4 rounded-lg font-semibold transition text-lg">
+            <Link to="/demo" className="bg-white text-teal-600 dark:text-indigo-600 hover:bg-gray-100 px-10 py-4 rounded-lg font-semibold transition text-lg">
               Watch Demo
             </Link>
           </div>
@@ -410,7 +410,7 @@ function CommunityCard({ name, location, quote, trips }) {
   return (
     <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all">
       <div className="flex items-center mb-6">
-        <div className="w-14 h-14 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+        <div className="w-14 h-14 bg-gradient-to-br from-teal-400 via-teal-500 to-cyan-600 dark:from-purple-700 dark:via-indigo-700 dark:to-purple-800 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
           {name.charAt(0)}
         </div>
         <div>
@@ -423,7 +423,7 @@ function CommunityCard({ name, location, quote, trips }) {
       <p className="text-gray-600 dark:text-gray-300 mb-6 italic leading-relaxed">
         "{quote}"
       </p>
-      <div className="flex items-center text-sm text-teal-600 dark:text-teal-400 font-semibold">
+      <div className="flex items-center text-sm text-teal-600 dark:text-indigo-400 font-semibold">
         <MapPin className="w-5 h-5 mr-2" />
         {trips}
       </div>

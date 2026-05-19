@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-4 space-y-6">
             <h3 className="text-gray-900 dark:text-white font-bold text-3xl tracking-tight">
-              Tour<span className="text-teal-600 dark:text-teal-400">Ease</span>
+              Tour<span className="text-teal-600 dark:text-indigo-600">Ease</span>
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-400 max-w-xs">
               Smart travel companion for unforgettable adventures.
@@ -46,6 +46,7 @@ export default function Footer() {
               <ul className="space-y-4">
                 <FooterLink to="/privacy" label="Privacy" />
                 <FooterLink to="/terms" label="Terms" />
+                <FooterLink to="/help" label="Help" />
               </ul>
             </div>
           </div>
@@ -85,7 +86,7 @@ function FooterLink({ to, label }) {
       <span className="h-1.5 w-1.5 rounded-full bg-teal-500 dark:bg-orange-500 mr-3 opacity-70 group-hover:opacity-100 transition-all"></span>
       <Link
         to={to}
-        className="text-sm text-gray-700 dark:text-gray-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-all"
+        className="text-sm text-gray-700 dark:text-gray-400 group-hover:text-teal-600 dark:group-hover:text-indigo-400 transition-all"
       >
         {label}
       </Link>

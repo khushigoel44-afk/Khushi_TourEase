@@ -133,7 +133,7 @@ export default function PlanTrip() {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-lg font-semibold transition"
+            className="w-full bg-teal-500 hover:bg-teal-600 dark:bg-indigo-600 dark:hover:bg-indigo-800 text-white py-3 rounded-lg font-semibold transition"
           >
             Generate Trip Plan
           </button>

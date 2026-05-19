@@ -71,7 +71,7 @@ function ReviewItem({ icon, label, value }) {
   return (
     <div className="flex items-start space-x-3">
       <div className="w-10 h-10 bg-white dark:bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0">
-        <Icon className="w-5 h-5 text-teal-500" />
+        <Icon className="w-5 h-5 text-teal-500 dark:text-indigo-600" />
       </div>
       <div>
         <p className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-bold">
@@ -283,7 +283,7 @@ export default function TripPlanner() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white">
-      <div className="relative bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 text-white py-20 text-center overflow-hidden">
+      <div className="relative bg-gradient-to-br from-teal-400 via-teal-500 to-cyan-600 dark:from-purple-700 dark:via-indigo-700 dark:to-purple-800 text-white py-20 text-center overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6 z-10">
           <div className="inline-flex items-center space-x-2 bg-white/10 border border-white/20 backdrop-blur-xl px-4 py-1.5 rounded-full mb-6">
             <Sparkles className="w-4 h-4 text-orange-300" />
@@ -305,12 +305,12 @@ export default function TripPlanner() {
             ].map((s, idx) => (
               <React.Fragment key={s.num}>
                 <div className="flex flex-col items-center">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg transition-all ${step >= s.num ? 'bg-teal-500 text-white shadow-lg shadow-teal-500/40' : 'bg-gray-200 dark:bg-gray-800 text-gray-400'}`}>
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg transition-all ${step >= s.num ? 'bg-teal-500 dark:bg-indigo-600 text-white shadow-lg shadow-teal-500/40 dark:shadow-indigo-600/40' : 'bg-gray-200 dark:bg-gray-800 text-gray-400'}`}>
                     {s.num}
                   </div>
-                  <span className={`text-sm mt-2 font-semibold ${step >= s.num ? 'text-teal-600 dark:text-teal-400' : 'text-gray-400'}`}>{s.label}</span>
+                  <span className={`text-sm mt-2 font-semibold ${step >= s.num ? 'text-teal-600 dark:text-indigo-600' : 'text-gray-400'}`}>{s.label}</span>
                 </div>
-                {idx < 3 && <div className={`flex-1 h-1 mx-4 rounded transition-all ${step > s.num ? 'bg-teal-500' : 'bg-gray-200 dark:bg-gray-800'}`} />}
+                {idx < 3 && <div className={`flex-1 h-1 mx-4 rounded transition-all ${step > s.num ? 'bg-teal-500 dark:bg-indigo-600' : 'bg-gray-200 dark:bg-gray-800'}`} />}
               </React.Fragment>
             ))}
           </div>
@@ -327,7 +327,7 @@ export default function TripPlanner() {
               </div>
               <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border dark:border-gray-800">
                 <label className="flex items-center text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 uppercase tracking-wider">
-                  <MapPin className="w-5 h-5 mr-2 text-teal-500" /> Destination
+                  <MapPin className="w-5 h-5 mr-2 text-teal-500 dark:text-indigo-600" /> Destination
                 </label>
                 <input
                   type="text"
@@ -340,13 +340,13 @@ export default function TripPlanner() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border dark:border-gray-800">
                   <label className="flex items-center text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 uppercase tracking-wider">
-                    <Calendar className="w-5 h-5 mr-2 text-teal-500" /> Start Date
+                    <Calendar className="w-5 h-5 mr-2 text-teal-500 dark:text-indigo-600" /> Start Date
                   </label>
                   <input type="date" value={formData.startDate} onChange={(e) => setFormData({ ...formData, startDate: e.target.value })} className="w-full bg-gray-50 dark:bg-gray-800 border dark:border-gray-700 rounded-xl px-6 py-4 outline-none text-gray-900 dark:text-white" />
                 </div>
                 <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border dark:border-gray-800">
                   <label className="flex items-center text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 uppercase tracking-wider">
-                    <Calendar className="w-5 h-5 mr-2 text-orange-500" /> End Date
+                    <Calendar className="w-5 h-5 mr-2 text-orange-500 dark:text-indigo-600" /> End Date
                   </label>
                   <input type="date" value={formData.endDate} onChange={(e) => setFormData({ ...formData, endDate: e.target.value })} className="w-full bg-gray-50 dark:bg-gray-800 border dark:border-gray-700 rounded-xl px-6 py-4 outline-none text-gray-900 dark:text-white" />
                 </div>
@@ -362,12 +362,12 @@ export default function TripPlanner() {
               </div>
               <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border dark:border-gray-800">
                 <label className="flex items-center text-sm font-bold text-gray-700 dark:text-gray-300 mb-4 uppercase tracking-wider">
-                  <Users className="w-5 h-5 mr-2 text-teal-500" /> Number of Travelers
+                  <Users className="w-5 h-5 mr-2 text-teal-500 dark:text-indigo-600" /> Number of Travelers
                 </label>
                 <div className="flex items-center space-x-4">
                   <button
                     onClick={() => setFormData({ ...formData, travelers: Math.max(1, formData.travelers - 1) })}
-                    className="w-12 h-12 bg-teal-500 hover:bg-teal-600 text-white rounded-xl font-bold text-xl transition-all active:scale-95"
+                    className="w-12 h-12 bg-teal-500 hover:bg-teal-600 dark:bg-indigo-600 dark:hover:bg-indigo-800 text-white rounded-xl font-bold text-xl transition-all active:scale-95"
                   >
                     −
                   </button>
@@ -381,17 +381,17 @@ export default function TripPlanner() {
                   </div>
                   <button
                     onClick={() => setFormData({ ...formData, travelers: formData.travelers + 1 })}
-                    className="w-12 h-12 bg-teal-500 hover:bg-teal-600 text-white rounded-xl font-bold text-xl transition-all active:scale-95"
+                    className="w-12 h-12 bg-teal-500 hover:bg-teal-600 dark:bg-indigo-600 dark:hover:bg-indigo-800 text-white rounded-xl font-bold text-xl transition-all active:scale-95"
                   >
                     +
                   </button>
                 </div>
               </div>
               <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border dark:border-gray-800">
-                <label className="flex items-center text-sm font-bold text-gray-700 dark:text-gray-300 mb-4 uppercase tracking-wider"><DollarSign className="w-5 h-5 mr-2 text-teal-500" /> Budget Range</label>
+                <label className="flex items-center text-sm font-bold text-gray-700 dark:text-gray-300 mb-4 uppercase tracking-wider"><DollarSign className="w-5 h-5 mr-2 text-teal-500 dark:text-indigo-600" /> Budget Range</label>
                 <div className="grid grid-cols-3 gap-4">
                   {['budget', 'moderate', 'luxury'].map((b) => (
-                    <button key={b} onClick={() => setFormData({ ...formData, budget: b })} className={`py-4 px-6 rounded-xl font-bold transition-all ${formData.budget === b ? 'bg-teal-500 text-white shadow-lg shadow-teal-500/40' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>
+                    <button key={b} onClick={() => setFormData({ ...formData, budget: b })} className={`py-4 px-6 rounded-xl font-bold transition-all ${formData.budget === b ? 'bg-teal-500 text-white shadow-lg shadow-teal-500/40 dark:bg-indigo-600 dark:shadow-indigo-600/40' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>
                       {b.charAt(0).toUpperCase() + b.slice(1)}
                     </button>
                   ))}
@@ -411,9 +411,9 @@ export default function TripPlanner() {
                   const Icon = interest.icon;
                   const isSelected = formData.interests.includes(interest.id);
                   return (
-                    <button key={interest.id} onClick={() => toggleInterest(interest.id)} className={`bg-white dark:bg-gray-900 p-8 rounded-2xl border-2 transition-all ${isSelected ? 'border-teal-500 shadow-xl shadow-teal-500/20' : 'border-gray-200 dark:border-gray-800'}`}>
-                      <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-4 mx-auto transition-all ${isSelected ? 'bg-teal-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600'}`}><Icon className="w-8 h-8" /></div>
-                      <h3 className={`font-bold text-lg ${isSelected ? 'text-teal-600 dark:text-teal-400' : 'text-gray-900 dark:text-white'}`}>{interest.label}</h3>
+                    <button key={interest.id} onClick={() => toggleInterest(interest.id)} className={`bg-white dark:bg-gray-900 p-8 rounded-2xl border-2 transition-all ${isSelected ? 'border-teal-500 shadow-xl shadow-teal-500/20 dark:border-indigo-600 dark:shadow-indigo-600/20' : 'border-gray-200 dark:border-gray-800'}`}>
+                      <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-4 mx-auto transition-all ${isSelected ? 'bg-teal-500 text-white dark:bg-indigo-600' : 'bg-gray-100 dark:bg-gray-800 text-gray-600'}`}><Icon className="w-8 h-8" /></div>
+                      <h3 className={`font-bold text-lg ${isSelected ? 'text-teal-600 dark:text-indigo-600' : 'text-gray-900 dark:text-white'}`}>{interest.label}</h3>
                     </button>
                   );
                 })}
@@ -427,7 +427,7 @@ export default function TripPlanner() {
                 <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">Review Your Trip</h2>
                 <p className="text-gray-600 dark:text-gray-400 text-lg">Ready to see your personalized itinerary?</p>
               </div>
-              <div className="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-gray-900 dark:to-gray-950 rounded-2xl p-8 border border-teal-200 dark:border-teal-800">
+              <div className="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-gray-900 dark:to-gray-950 rounded-2xl p-8 border border-teal-200 dark:border-indigo-800">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-4">
                     <ReviewItem icon={MapPin} label="Destination" value={formData.destination || 'Not set'} />
@@ -441,7 +441,7 @@ export default function TripPlanner() {
               </div>
 
               <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 text-center shadow-xl border dark:border-gray-800">
-                <Plane className="w-16 h-16 mx-auto mb-4 text-teal-500" />
+                <Plane className="w-16 h-16 mx-auto mb-4 text-teal-500 dark:text-indigo-600" />
                 <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Ready to Generate Your Itinerary?</h3>
                 {error && <p className="text-red-600 font-semibold mb-4">{error}</p>}
                 <button
@@ -465,7 +465,7 @@ export default function TripPlanner() {
               <button
                 onClick={() => setStep(step + 1)}
                 disabled={(step === 1 && !isStep1Valid) || (step === 3 && !isStep3Valid)}
-                className={`ml-auto px-8 py-3.5 rounded-xl font-bold transition-all shadow-lg inline-flex items-center text-white ${((step === 1 && !isStep1Valid) || (step === 3 && !isStep3Valid)) ? 'bg-gray-300 cursor-not-allowed opacity-60' : 'bg-teal-500 hover:bg-teal-600 shadow-teal-500/30 active:scale-95'}`}
+                className={`ml-auto px-8 py-3.5 rounded-xl font-bold transition-all shadow-lg inline-flex items-center text-white ${((step === 1 && !isStep1Valid) || (step === 3 && !isStep3Valid)) ? 'bg-gray-300 cursor-not-allowed opacity-60' : 'bg-teal-500 hover:bg-teal-600 dark:bg-indigo-600 dark:hover:bg-indigo-800 shadow-teal-500/30 dark:shadow-indigo-600/30 active:scale-95'}`}
               >
                 Continue <ChevronRight className="ml-2 w-5 h-5" />
               </button>
@@ -477,7 +477,7 @@ export default function TripPlanner() {
       <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 text-center">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-center mb-4">
-            <Plane className="w-8 h-8 text-teal-500 mr-3" />
+            <Plane className="w-8 h-8 text-teal-500 mr-3 dark:text-indigo-600" />
             <h3 className="text-2xl font-black text-gray-900 dark:text-white">AI Trip Planner</h3>
           </div>
           <p className="text-gray-600 dark:text-gray-400 mb-6">Your personal AI travel assistant for unforgettable adventures</p>

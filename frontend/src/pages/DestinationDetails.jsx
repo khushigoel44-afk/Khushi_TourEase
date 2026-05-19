@@ -112,14 +112,14 @@ export default function DestinationDetails() {
 
               <button
                 onClick={() => navigate("/plan-trip")}
-                className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-lg font-semibold transition"
+                className="w-full bg-teal-500 hover:bg-teal-600 dark:bg-indigo-600 dark:hover:bg-indigo-800 text-white py-3 rounded-lg font-semibold transition"
               >
                 Plan this Trip
               </button>
 
               <button
                 onClick={() => navigate("/destinations")}
-                className="mt-3 w-full text-teal-600 dark:text-teal-400 font-semibold hover:underline"
+                className="mt-3 w-full text-teal-600 dark:text-indigo-600 font-semibold hover:underline"
               >
                 Explore more destinations
               </button>
@@ -135,7 +135,7 @@ function InfoChip({ icon, label }) {
   const Icon = icon;
   return (
     <div className="flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-3">
-      <Icon className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+      <Icon className="w-5 h-5 text-teal-600 dark:text-indigo-600" />
       <span className="text-sm text-gray-800 dark:text-gray-200">
         {label}
       </span>

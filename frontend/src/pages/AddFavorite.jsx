@@ -140,7 +140,7 @@ function DestinationCard({ destination, isFavorite, onToggleFavorite }) {
             e.stopPropagation();
             navigate(`/destinations/${destination.id}`);
           }}
-          className="w-full bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-lg font-semibold"
+          className="w-full bg-teal-500 hover:bg-teal-600 dark:bg-indigo-600 dark:hover:bg-indigo-800 text-white py-2 rounded-lg font-semibold"
         >
           Explore
         </button>
@@ -159,7 +159,7 @@ function EmptyFavoritesState() {
       </p>
       <Link
         to="/destinations"
-        className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 rounded-lg font-semibold"
+        className="bg-teal-500 hover:bg-teal-600 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold"
       >
         Explore Destinations
       </Link>
