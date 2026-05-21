@@ -263,27 +263,48 @@ export default function Home() {
           your next adventure
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <CommunityCard
-            name="Emily Chen"
-            location="New York, USA"
-            quote="TourEase made planning my Europe trip so easy! The AI suggestions were spot-on, and I discovered hidden gems I never would have found."
-            trips="23 Trips"
-          />
+        <div className="community-marquee-wrapper">
+          <div className="community-marquee-track">
+            {/* Original set */}
+            <CommunityCard
+              name="Emily Chen"
+              location="New York, USA"
+              quote="TourEase made planning my Europe trip so easy! The AI suggestions were spot-on, and I discovered hidden gems I never would have found."
+              trips="23 Trips"
+            />
+            <CommunityCard
+              name="Marco Rossi"
+              location="Rome, Italy"
+              quote="As a frequent traveler, this app has become essential. The offline features saved me countless times, and the community is incredibly helpful."
+              trips="47 Trips"
+            />
+            <CommunityCard
+              name="Priya Patel"
+              location="Mumbai, India"
+              quote="The budget tracker helped me travel more while spending less. I love how it suggests alternatives and helps optimize my expenses!"
+              trips="15 Trips"
+            />
 
-          <CommunityCard
-            name="Marco Rossi"
-            location="Rome, Italy"
-            quote="As a frequent traveler, this app has become essential. The offline features saved me countless times, and the community is incredibly helpful."
-            trips="47 Trips"
-          />
-
-          <CommunityCard
-            name="Priya Patel"
-            location="Mumbai, India"
-            quote="The budget tracker helped me travel more while spending less. I love how it suggests alternatives and helps optimize my expenses!"
-            trips="15 Trips"
-          />
+            {/* Duplicate set for seamless loop */}
+            <CommunityCard
+              name="Emily Chen"
+              location="New York, USA"
+              quote="TourEase made planning my Europe trip so easy! The AI suggestions were spot-on, and I discovered hidden gems I never would have found."
+              trips="23 Trips"
+            />
+            <CommunityCard
+              name="Marco Rossi"
+              location="Rome, Italy"
+              quote="As a frequent traveler, this app has become essential. The offline features saved me countless times, and the community is incredibly helpful."
+              trips="47 Trips"
+            />
+            <CommunityCard
+              name="Priya Patel"
+              location="Mumbai, India"
+              quote="The budget tracker helped me travel more while spending less. I love how it suggests alternatives and helps optimize my expenses!"
+              trips="15 Trips"
+            />
+          </div>
         </div>
 
         <div className="relative h-80 rounded-2xl overflow-hidden">
