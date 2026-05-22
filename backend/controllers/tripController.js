@@ -127,17 +127,17 @@ ${weatherContext || 'Weather information is unavailable. Check local forecasts b
 // GENERATE INITIAL ITINERARY
 // ============================
 const generateTrip = async (req, res) => {
-  try {
-    const {
-      destination,
-      startDate,
-      endDate,
-      travelers,
-      budget,
-      interests,
-      accommodation,
-    } = req.body;
+  const {
+    destination,
+    startDate,
+    endDate,
+    travelers,
+    budget,
+    interests,
+    accommodation,
+  } = req.body;
 
+  try {
     if (!destination || !startDate || !endDate) {
       return res.status(400).json({ error: "Missing required fields" });
     }
@@ -233,26 +233,34 @@ Return in clean readable text.
 
     res.json({ plan });
   } catch (error) {
-    console.error("AI Error:", error);
-    if (!openai) {
-      const plan = createMockItinerary({
-        destination: req.body.destination,
-        startDate: req.body.startDate,
-        endDate: req.body.endDate,
-        travelers: req.body.travelers,
-        budget: req.body.budget,
-        interests: req.body.interests,
-        accommodation: req.body.accommodation,
-        weatherContext,
-      });
-      return res.json({ plan, warning: 'Using local fallback itinerary because OpenAI API key is not configured.' });
-    }
+console.error("AI Error:", error);
 
-    res.status(500).json({
-      error: "Failed to generate trip",
-      details: error.message,
-    });
-  }
+if (!openai) {
+  console.log("Returning fallback itinerary because API key is not configured...");
+
+  const plan = createMockItinerary({
+    destination: req.body.destination,
+    startDate: req.body.startDate,
+    endDate: req.body.endDate,
+    travelers: req.body.travelers,
+    budget: req.body.budget,
+    interests: req.body.interests,
+    accommodation: req.body.accommodation,
+    weatherContext,
+  });
+
+  return res.json({
+    plan,
+    warning:
+      "Using local fallback itinerary because OpenAI API key is not configured.",
+  });
+}
+
+  res.status(500).json({
+    error: "Failed to generate trip",
+    details: error.message,
+  });
+ }
 };
 
 // ============================
@@ -307,12 +315,20 @@ Return the updated itinerary only.
 
     res.json({ updatedPlan });
   } catch (error) {
-    console.error("Refinement AI Error:", error);
-    if (!openai) {
-      return res.json({ updatedPlan: `${req.body.originalPlan}\n\nNOTE: OpenAI API key is not configured, so the itinerary was not changed.` });
-    }
-    res.status(500).json({ error: "Failed to refine itinerary" });
-  }
+console.error("Refinement AI Error:", error);
+
+if (!openai) {
+  return res.json({
+    updatedPlan: `${req.body.originalPlan}
+
+NOTE: OpenAI API key is not configured, so the itinerary was not changed.`,
+  });
+}
+
+ res.status(500).json({
+   error: "Failed to refine itinerary",
+  });
+ }
 };
 
 module.exports = {

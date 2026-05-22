@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Heart, Sun, Moon } from "lucide-react";
+import { Menu, X, Heart, Sun, Moon, Globe, MapPin } from "lucide-react";
 import { useFavorites } from "../hooks/useFavorites";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../context/useTheme";
+import LanguageSelector from "./LanguageSelector";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +21,7 @@ export default function Navigation() {
     { path: "/destinations", label: "Explore" },
     { path: "/contact", label: "Contact" },
     { path: "/trip-planner", label: "Trip Planner" },
+    { path: "/smart-trip-planner", label: "Smart Planner" },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -96,16 +98,22 @@ export default function Navigation() {
         }
       `}</style>
 
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-950 bg-gradient-to-b from-teal-50/50 to-transparent dark:from-gray-800/50 shadow-md border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* LOGO */}
-            <span
+            <div
               onClick={handleLogoClick}
-              className="cursor-pointer text-2xl font-bold bg-linear-to-r from-teal-500 to-cyan-600 dark:from-indigo-400 dark:to-purple-500 bg-clip-text text-transparent"
+              className="cursor-pointer flex items-center gap-2 group"
             >
-              TourEase
-            </span>
+              <div className="relative flex items-center justify-center w-8 h-8">
+                <Globe className="w-8 h-8 text-teal-600 dark:text-cyan-400 group-hover:rotate-180 transition-transform duration-700" strokeWidth={1.5} />
+                <MapPin className="w-4 h-4 text-orange-500 absolute -top-1 -right-1 fill-orange-100 dark:fill-orange-900" />
+              </div>
+              <span className="text-2xl font-bold bg-linear-to-r from-teal-500 to-cyan-600 dark:from-cyan-400 dark:to-blue-500 bg-clip-text text-transparent">
+                TourEase
+              </span>
+            </div>
 
             {/* DESKTOP NAV */}
             <div className="hidden md:flex items-center gap-1">
@@ -140,6 +148,7 @@ export default function Navigation() {
 
             {/* RIGHT ACTIONS */}
             <div className="flex items-center gap-3">
+
               {/* THEME TOGGLE */}
               <button
                 onClick={toggleTheme}
@@ -160,9 +169,8 @@ export default function Navigation() {
 
               {/* CTA */}
               {!isLoggedIn ? (
-                /* CHANGED: Points to Trip Planner */
                 <Link
-                  to="/trip-planner"
+                  to="/login"
                   className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition items-center"
                 >
                   Get Started
@@ -279,9 +287,8 @@ export default function Navigation() {
             }}
           >
             {!isLoggedIn ? (
-              /* CHANGED: Points to Trip Planner */
               <Link
-                to="/trip-planner"
+                to="/login"
                 className="block w-full bg-linear-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg text-center"
                 onClick={() => setIsOpen(false)}
               >

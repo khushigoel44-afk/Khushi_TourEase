@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { conversationFlow } from "./conversationFlow";
 import { getItinerary } from "./itineraryRules";
 import { formatItinerary } from "./itineraryFormatter";
+import { X, RotateCcw } from "lucide-react";
 
 export default function ChatbotContainer({ onClose }) {
   const [stepIndex, setStepIndex] = useState(0);
@@ -89,7 +90,9 @@ export default function ChatbotContainer({ onClose }) {
     <div className="chatbot-container">
       <div className="chatbot-header">
         <span>TourEase Assistant</span>
-        <button onClick={onClose}>✖</button>
+        <button onClick={onClose} className="hover:opacity-70 transition-opacity">
+          <X className="w-5 h-5" />
+        </button>
       </div>
 
       <div className="chatbot-body">
@@ -118,8 +121,8 @@ export default function ChatbotContainer({ onClose }) {
       {/* Restart after itinerary */}
       {stepIndex === conversationFlow.length && (
         <div className="chatbot-footer">
-          <button className="restart-btn" onClick={restartConversation}>
-            🔄 Restart Trip Planning
+          <button className="restart-btn flex items-center justify-center gap-2" onClick={restartConversation}>
+            <RotateCcw className="w-4 h-4" /> Restart Trip Planning
           </button>
         </div>
       )}

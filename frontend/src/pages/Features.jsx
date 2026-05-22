@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   MapPin,
@@ -19,6 +19,10 @@ import {
 } from 'lucide-react';
 
 export default function Features() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
       {/* Hero Section */}
