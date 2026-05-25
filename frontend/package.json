@@ -14,6 +14,7 @@
     "@react-three/fiber": "^9.6.1",
     "@tailwindcss/vite": "^4.1.17",
     "axios": "^1.16.1",
+    "framer-motion": "^12.40.0",
     "install": "^0.13.0",
     "lightningcss": "^1.32.0",
     "lucide-react": "^0.553.0",
