@@ -120,11 +120,7 @@ export default function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    // This simulates the app "loading" data for 2 seconds
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
+    setIsLoading(false);
   }, []);
 
   if (isLoading) {
