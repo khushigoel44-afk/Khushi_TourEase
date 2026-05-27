@@ -1,8 +1,8 @@
 const {
   generateChatResponse,
-} = require("../services/chatService");
+} = require("../services/chatservice");
 
-async function chatController(req, res) {
+async function chatcontroller(req, res) {
 
   try {
 
@@ -31,5 +31,5 @@ async function chatController(req, res) {
 }
 
 module.exports = {
-  chatController,
+  chatcontroller,
 };

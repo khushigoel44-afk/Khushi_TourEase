@@ -108,50 +108,51 @@ TourEase is an open-source, AI-powered travel assistant that helps tourists plan
 
 ## 🗂️ Project Structure
 
-```
+## 🗂️ Project Structure
+
+```text
 TourEase/
-├── frontend/                        # React + Vite client (port 5173)
-│   └── src/
-│       ├── assets/                  # Images, icons, static media
-│       ├── components/              # Reusable UI components
-│       │   ├── chatbot/             # AI chatbot widget
-│       │   ├── common/              # Loader, ScrollToTop, etc.
-│       │   ├── features/            # Feature-specific sub-components
-│       │   ├── layout/              # Page layout wrappers
-│       │   ├── Navigation.jsx
-│       │   ├── Footer.jsx
-│       │   ├── EventCard.jsx
-│       │   ├── WeatherWidget.jsx
-│       │   ├── ItineraryDisplay.jsx
-│       │   └── SuggestionCard.jsx
-│       ├── context/                 # Global state (Context API)
-│       │   ├── FavoritesContext.jsx
-│       │   └── ThemeContext.jsx
-│       ├── hooks/                   # Custom React hooks
-│       ├── pages/                   # One file per route
-│       ├── services/                # HTTP service layer (Axios)
-│       ├── utils/                   # Helper functions
-│       ├── config/                  # SDK & env config
-│       ├── App.jsx                  # Router + ProtectedRoute guard
-│       └── main.jsx                 # Vite entry point
+├── frontend/                        # React + Vite client (Mapped to Port 7000)
+│   ├── src/
+│   │   ├── assets/                  # Images, icons, static media
+│   │   ├── components/              # Reusable UI components
+│   │   │   ├── chatbot/             # AI chatbot widget
+│   │   │   ├── common/              # Loader, ScrollToTop, etc.
+│   │   │   ├── features/            # Feature-specific sub-components
+│   │   │   └── layout/              # Page layout wrappers
+│   │   ├── context/                 # Global state (Context API)
+│   │   ├── hooks/                   # Custom React hooks
+│   │   ├── pages/                   # One file per route
+│   │   ├── services/                # HTTP service layer (Axios)
+│   │   ├── utils/                   # Helper functions
+│   │   └── config/                  # SDK & env config
+│   ├── Dockerfile                   # Multi-stage production build (Node + Nginx)
+│   └── .dockerignore                # Excludes node_modules and production builds
 │
-├── backend/                         # Node.js + Express REST API (port 5000)
-│   ├── config/
-│   │   ├── db.js                    # MongoDB connection (Mongoose)
-│   │   ├── passport.js              # Google OAuth 2.0 strategy
-│   │   └── mailTransporter.js       # Nodemailer config
+├── backend/                         # Node.js + Express REST API (Mapped to Port 4000)
+│   ├── config/                      # Database, Passport OAuth, and Mail configurations
 │   ├── controllers/                 # Business logic per domain
 │   ├── models/                      # Mongoose schemas
 │   ├── routes/                      # Express routers
 │   ├── services/                    # External integrations & heavy logic
-│   └── server.js                    # App bootstrap & middleware
+│   ├── server.js                    # App bootstrap & middleware
+│   ├── Dockerfile                   # Node.js environment build configuration
+│   └── .dockerignore                # Excludes local node_modules and debug logs
 │
 ├── screenshots/                     # UI previews
+├── docker-compose.yml               # Orchestrates multi-container local stack
 ├── .env.example                     # Environment variable template
 ├── CONTRIBUTING.md
 ├── INSTALLATION.md
 └── README.md
 ```
+
+### 🔌 Port Allocation Mapping Reference
+
+| Service | Internal Container Port | Host Port (Your Machine) | Purpose |
+| :--- | :--- | :--- | :--- |
+| **`frontend`** | `80` (Nginx) | `7000` | Serves compiled React production static assets |
+| **`backend`** | `3000` (Node.js) | `4000` | Processes REST API endpoints and business logic |
 
 ---
 
@@ -237,6 +238,7 @@ TourEase/
 - npm v9+
 - MongoDB Atlas cluster (free tier works)
 
+
 ### Steps
 
 ```bash
@@ -258,6 +260,21 @@ Open **[http://localhost:5173](http://localhost:5173)** — you're in. 🎉
 
 > [!NOTE]
 > For Google OAuth, OpenAI, and email keys, see the **[Full Installation Guide](INSTALLATION.md)**.
+
+## 🚀 Quickstart Local Development with Docker
+
+No more running separate terminal scripts for frontend and backend! 
+
+### Prerequisites
+- Docker Desktop installed
+
+### Spin up the environment
+```bash
+docker compose up --build
+```
+ - Frontend Application: http://localhost:7000
+
+ - Backend API Layer: http://localhost:4000
 
 ---
 
