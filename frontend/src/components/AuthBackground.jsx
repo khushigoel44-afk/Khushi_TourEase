@@ -37,7 +37,7 @@ function StarField({ theme }) {
 }
 
 /* ── Aurora ribbon (animated sine-wave mesh) ── */
-function AuroraRibbon({ theme, yOffset = 0, phase = 0, speed = 0.3, amplitude = 1.2, colorA, colorB }) {
+function AuroraRibbon({ yOffset = 0, phase = 0, speed = 0.3, amplitude = 1.2, colorA }) {
   const meshRef = useRef();
   const segs = 80;
   const width = 28;
@@ -183,16 +183,16 @@ function AuroraScene({ theme }) {
 
       {/* Three layered aurora ribbons at different depths + offsets */}
       <AuroraRibbon
-        theme={theme} yOffset={2} phase={0}   speed={0.22} amplitude={1.4}
-        colorA={ribbonA} colorB={ribbonB}
+        yOffset={2} phase={0}   speed={0.22} amplitude={1.4}
+        colorA={ribbonA}
       />
       <AuroraRibbon
-        theme={theme} yOffset={-1.5} phase={2.1} speed={0.18} amplitude={1.0}
-        colorA={ribbonB} colorB={ribbonC}
+        yOffset={-1.5} phase={2.1} speed={0.18} amplitude={1.0}
+        colorA={ribbonB}
       />
       <AuroraRibbon
-        theme={theme} yOffset={4} phase={4.5} speed={0.14} amplitude={0.8}
-        colorA={ribbonC} colorB={ribbonA}
+        yOffset={4} phase={4.5} speed={0.14} amplitude={0.8}
+        colorA={ribbonC}
       />
 
       {/* Distant bokeh glow blobs */}

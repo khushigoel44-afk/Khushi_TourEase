@@ -200,6 +200,54 @@ export const api = {
     });
   },
 
+  // --- Travel Locker ---
+  async getLockerDocuments(category) {
+    const query = category ? `?category=${category}` : '';
+    return this.request(`/locker${query}`);
+  },
+
+  async getLockerDocument(id) {
+    return this.request(`/locker/${id}`);
+  },
+
+  async uploadLockerDocument(formData) {
+    const token = localStorage.getItem('token');
+    const url = `${API_BASE_URL}/locker/upload`;
+
+    const headers = {};
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    // Do NOT set Content-Type — browser will set multipart boundary automatically
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: formData,
+    });
+
+    const text = await response.text();
+    const data = text ? JSON.parse(text) : {};
+
+    if (!response.ok) {
+      throw new Error(data.message || data.error || 'Upload failed');
+    }
+
+    return data;
+  },
+
+  async updateLockerDocument(id, data) {
+    return this.request(`/locker/${id}`, {
+      method: 'PATCH',
+      body: data,
+    });
+  },
+
+  async deleteLockerDocument(id) {
+    return this.request(`/locker/${id}`, {
+      method: 'DELETE',
+    });
+  },
   // --- Currency Converter (external API, no backend proxy) ---
   async getExchangeRates(base = 'USD') {
     const res = await fetch(`https://open.er-api.com/v6/latest/${base}`);
