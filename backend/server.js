@@ -13,6 +13,7 @@ const smartPlannerRoutes = require("./routes/smartPlannerRoutes");
 const tripRoutes = require("./routes/tripRoutes");
 const chatRoutes = require("./routes/chatroutes");
 const expenseRoutes = require("./routes/expenseRoutes");
+const lockerRoutes = require("./routes/lockerRoutes");
 const helmet = require("helmet");
 const morgan = require("morgan");
 
@@ -39,6 +40,7 @@ app.use('/api/itinerary', itineraryRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/weather', weatherRoutes);
 app.use('/api/smart-planner', smartPlannerRoutes);
+app.use('/api/locker', lockerRoutes);
 
 // Health check route
 app.get("/api/health", (req, res) => {

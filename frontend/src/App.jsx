@@ -42,6 +42,7 @@ import ScrollToTopOnNavigate from "./components/common/ScrollToTopOnNavigate";
 import DynamicPlannerPage from './pages/DynamicPlannerPage';
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import SplitExpense from "./pages/SplitExpense";
+import TravelLocker from "./pages/TravelLocker";
 import CurrencyConverter from "./pages/CurrencyConverter";
 import Contributors from "./pages/Contributors";
 
@@ -111,6 +112,12 @@ function AppRoutes() {
               }
             />
             <Route
+              path="/travel-locker"
+              element={
+                <ProtectedRoute>
+                  <PageTransition><TravelLocker /></PageTransition>
+                </ProtectedRoute>
+              }
               path="/currency-converter"
               element={<PageTransition><CurrencyConverter /></PageTransition>}
             />
