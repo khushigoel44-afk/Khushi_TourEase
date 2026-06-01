@@ -23,6 +23,7 @@ export default function Navigation() {
     { path: "/trip-planner", label: "Trip Planner" },
     { path: "/smart-trip-planner", label: "Smart Planner" },
     { path: "/split-expense", label: "Expense Splitter" },
+    { path: "/travel-locker", label: "Travel Locker" },
     { path: "/currency-converter", label: "Currency" },
   ];
 
@@ -132,6 +133,7 @@ export default function Navigation() {
                   "hover:bg-indigo-100 dark:hover:bg-indigo-900/30",
                   "hover:bg-violet-100 dark:hover:bg-violet-900/30",
                   "hover:bg-amber-100 dark:hover:bg-amber-900/30",
+                  "hover:bg-lime-100 dark:hover:bg-lime-900/30"
                 ];
                 const isSecondaryDesktopItem = index >= 5;
                 return (
@@ -267,6 +269,7 @@ export default function Navigation() {
                 "hover:bg-indigo-100 dark:hover:bg-indigo-900/40",
                 "hover:bg-violet-100 dark:hover:bg-violet-900/40",
                 "hover:bg-amber-100 dark:hover:bg-amber-900/40",
+                "hover:bg-lime-100 dark:hover:bg-lime-900/40"
               ];
               return (
                 <Link

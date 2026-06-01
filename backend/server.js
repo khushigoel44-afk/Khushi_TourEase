@@ -13,7 +13,9 @@ const smartPlannerRoutes = require("./routes/smartPlannerRoutes");
 const tripRoutes = require("./routes/tripRoutes");
 const chatRoutes = require("./routes/chatroutes");
 const expenseRoutes = require("./routes/expenseRoutes");
+const lockerRoutes = require("./routes/lockerRoutes");
 const helmet = require("helmet");
+const passport = require("./config/passport");
 const morgan = require("morgan");
 
 
@@ -30,6 +32,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(passport.initialize());
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -39,6 +42,7 @@ app.use('/api/itinerary', itineraryRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/weather', weatherRoutes);
 app.use('/api/smart-planner', smartPlannerRoutes);
+app.use('/api/locker', lockerRoutes);
 
 // Health check route
 app.get("/api/health", (req, res) => {

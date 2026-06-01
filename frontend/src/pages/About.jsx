@@ -43,14 +43,6 @@ export default function About() {
               >
                 Explore Destinations
               </a>
-
-              <a
-                href="/about"
-                className="border border-gray-400 hover:border-cyan-400 hover:text-cyan-300 px-8 py-4 rounded-2xl transition-all duration-300"
-              >
-                Learn More
-              </a>
-
             </div>
           </div>
 
