@@ -29,7 +29,7 @@ exports.saveItinerary = async (req, res) => {
 
         // Create new itinerary
         const itinerary = new Itinerary({
-            userId: req.user?.id, // Optional - might not have auth yet
+            userId: req.user.id, // Optional - might not have auth yet
             destination,
             startDate: new Date(startDate),
             endDate: new Date(endDate),
@@ -170,6 +170,14 @@ exports.applySuggestion = async (req, res) => {
             });
         }
 
+        // Ownership check
+        if (itinerary.userId && itinerary.userId.toString() !== req.user.id) {
+            return res.status(403).json({
+                success: false,
+                message: 'Unauthorized: You do not own this itinerary'
+            });
+        }
+
         // Update the itinerary with the suggestion
         if (suggestion.suggestionType === 'event' && suggestion.eventDetails) {
             // Add event to the appropriate day
@@ -218,6 +226,22 @@ exports.rejectSuggestion = async (req, res) => {
         const { id } = req.params; // itinerary id
         const { suggestionId, feedback } = req.body;
 
+        const itinerary = await Itinerary.findById(id);
+        if (!itinerary) {
+            return res.status(404).json({
+                success: false,
+                message: 'Itinerary not found'
+            });
+        }
+
+        // Ownership check
+        if (itinerary.userId && itinerary.userId.toString() !== req.user.id) {
+            return res.status(403).json({
+                success: false,
+                message: 'Unauthorized: You do not own this itinerary'
+            });
+        }
+
         const suggestion = await Suggestion.findById(suggestionId);
 
         if (!suggestion) {
@@ -248,7 +272,7 @@ exports.rejectSuggestion = async (req, res) => {
 // Get all itineraries for a user
 exports.getUserItineraries = async (req, res) => {
     try {
-        const userId = req.user?.id;
+        const userId = req.user.id;
 
         const itineraries = await Itinerary.find({ userId })
             .sort({ startDate: -1 });
@@ -294,6 +318,49 @@ exports.getItinerary = async (req, res) => {
         res.status(500).json({
             success: false,
             message: 'Failed to fetch itinerary',
+            error: error.message
+        });
+    }
+};
+
+// Delete an itinerary
+exports.deleteItinerary = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const itinerary = await Itinerary.findById(id);
+
+        if (!itinerary) {
+            return res.status(404).json({
+                success: false,
+                message: 'Itinerary not found'
+            });
+        }
+
+        // Ownership check
+        if (itinerary.userId && itinerary.userId.toString() !== req.user.id) {
+            return res.status(403).json({
+                success: false,
+                message: 'Unauthorized: You do not own this itinerary'
+            });
+        }
+
+        await Itinerary.findByIdAndDelete(id);
+
+        // Clean up associated suggestions
+        const Suggestion = require('../models/Suggestion');
+        await Suggestion.deleteMany({ itineraryId: id });
+
+        res.json({
+            success: true,
+            message: 'Itinerary and associated suggestions deleted successfully'
+        });
+
+    } catch (error) {
+        console.error('Error deleting itinerary:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to delete itinerary',
             error: error.message
         });
     }

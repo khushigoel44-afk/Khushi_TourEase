@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const reviewSchema = new mongoose.Schema(
   {
@@ -6,12 +6,23 @@ const reviewSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
 
     username: {
       type: String,
       required: true,
-      trim: true, // Automatically removes accidental extra spaces at the start/end
-      match: [/^[a-zA-Z\s]+$/, "Name can only contain letters and spaces"], // Blocks numbers/symbols!
+      trim: true,
+      match: [/^[a-zA-Z\s.''-]+$/, "Name can only contain letters, spaces, dots, or apostrophes"],
     },
     rating: {
       type: Number,
@@ -29,10 +40,6 @@ const reviewSchema = new mongoose.Schema(
     travelDate: {
       type: Date,
     },
-
-    travelDate: {
-      type: Date,
-    },
     likes: {
       type: Number,
       default: 0,
@@ -41,4 +48,4 @@ const reviewSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export default mongoose.model("Review", reviewSchema);
+module.exports = mongoose.model("Review", reviewSchema);

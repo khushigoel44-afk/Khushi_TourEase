@@ -125,7 +125,7 @@ function RatingBar({ star, count, total }) {
 }
 
 /* ─── ReviewCard ───────────────────────────────────────── */
-function ReviewCard({ review, destId, helpfulMap, onHelpful }) {
+function ReviewCard({ review, helpfulMap, onHelpful }) {
   const voted = helpfulMap[review.id];
   return (
     <div className="bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 rounded-xl p-5 transition-all hover:shadow-md hover:border-teal-400/40">
@@ -278,7 +278,7 @@ export default function ReviewsPanel({ destination }) {
       {/* ── Header ── */}
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center">
-          <Star className="w-5 h-5 text-teal-600 dark:text-teal-400 fill-teal-500/30" />
+          <Star className="w-5 h-5 text-teal-600 dark:text-indigo-600" />
         </div>
         <div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
@@ -314,7 +314,7 @@ export default function ReviewsPanel({ destination }) {
       {/* ── Write a Review Form ── */}
       <div className="mb-8 p-5 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50/50 dark:bg-gray-800/30">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 flex items-center gap-2">
-          <User className="w-5 h-5 text-teal-500" />
+          <User className="w-5 h-5 text-teal-500 dark:text-indigo-600" />
           Write a Review
         </h3>
 
@@ -372,7 +372,7 @@ export default function ReviewsPanel({ destination }) {
           <button
             type="submit"
             id="submit-review-btn"
-            className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 active:bg-teal-700 text-white font-semibold px-6 py-2.5 rounded-lg transition-all shadow-sm hover:shadow-teal-500/30 hover:shadow-md"
+            className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 active:bg-teal-700 dark:bg-indigo-600 dark:hover:bg-indigo-800 dark:active:bg-indigo-800 text-white font-semibold px-6 py-2.5 rounded-lg transition-all shadow-sm hover:shadow-teal-500/30 hover:shadow-md"
           >
             <Send className="w-4 h-4" />
             Post Review

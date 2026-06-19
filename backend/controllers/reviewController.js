@@ -1,6 +1,7 @@
-import Review from "../models/Review.js";
+const Review = require("../models/Review");
+const User = require("../models/user");
 
-export const getReviewsByDestination = async (req, res) => {
+const getReviewsByDestination = async (req, res) => {
   try {
     const { destinationId } = req.params;
 
@@ -32,9 +33,26 @@ export const getReviewsByDestination = async (req, res) => {
   }
 };
 
-export const createReview = async (req, res) => {
+const createReview = async (req, res) => {
   try {
-    const review = await Review.create(req.body);
+    const userId = req.user.id;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const { rating, reviewText, travelerType, travelDate } = req.body;
+    const { destinationId } = req.params;
+
+    const review = await Review.create({
+      destinationId,
+      userId: user._id,
+      username: user.name, // Override username with User name from DB
+      rating,
+      reviewText,
+      travelerType,
+      travelDate: travelDate || new Date(),
+    });
 
     res.status(201).json(review);
   } catch (error) {
@@ -42,9 +60,31 @@ export const createReview = async (req, res) => {
   }
 };
 
-export const deleteReview = async (req, res) => {
+const deleteReview = async (req, res) => {
   try {
-    const { reviewId } = req.params; // Grab the ID from the URL
+    const { reviewId } = req.params;
+    const userId = req.user.id;
+
+    const review = await Review.findById(reviewId);
+    if (!review) {
+      return res.status(404).json({ message: "Review not found" });
+    }
+
+    const user = await User.findById(userId);
+    // Enforce ownership: review.userId matches user's ID, or fallback to username matching for legacy/mock reviews
+    const isOwner = (review.userId && review.userId.toString() === userId.toString()) ||
+                    (!review.userId && user && review.username === user.name);
+
+    if (!isOwner) {
+      return res.status(403).json({ message: "You are not authorized to delete this review" });
+    }
+
+    // Only the review owner or an admin can delete it
+    const currentUserId = req.user?.userId || req.user?.id;
+    const isAdmin = req.user?.role === "admin";
+    if (!isAdmin && review.userId && review.userId !== currentUserId) {
+      return res.status(403).json({ message: "You can only delete your own reviews" });
+    }
 
     await Review.findByIdAndDelete(reviewId);
 
@@ -54,7 +94,7 @@ export const deleteReview = async (req, res) => {
   }
 };
 
-export const likeReview = async (req, res) => {
+const likeReview = async (req, res) => {
   try {
     const { reviewId } = req.params;
 
@@ -69,4 +109,11 @@ export const likeReview = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Failed to like review" });
   }
+};
+
+module.exports = {
+  getReviewsByDestination,
+  createReview,
+  deleteReview,
+  likeReview,
 };

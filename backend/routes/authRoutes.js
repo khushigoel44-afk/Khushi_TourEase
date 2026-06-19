@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { signup, login } = require('../controllers/authController');
-const passport = require("passport");
+const passport = require("../config/passport");
 // @route   POST /api/auth/signup
 // @desc    Register a new user
 // @access  Public
